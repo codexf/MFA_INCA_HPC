@@ -1,5 +1,5 @@
 % Author: Xinyu Fu, fuxinyu2@msu.edu
-% Updated on 2021-05-15 for inca_hpcc
+% Updated on 2023-04-07 for inca_hpcc
 % This script analyzes the outputs for parameter continuation
 
 % Type the name of your INCA model
@@ -40,3 +40,13 @@ fprintf('Output for the best fit fluxes after Parameter Continuation \n')
 BESTFIT
 BESTFIT.par
 diary off;
+
+% Reset hpc options to default
+m.options.hpc_on = 0;
+m.options.hpc_bg = 0;
+
+% Update the model with flux values
+mod = fit2mod(m, BESTFIT);
+
+% Save the model
+save('bestfit_model.mat', 'mod');
