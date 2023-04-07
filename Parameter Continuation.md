@@ -20,8 +20,7 @@ case 'msu', % Submit jobs to the MSU cluster
             fprintf(fid,'echo "SLURM_JOBID: " $SLURM_JOBID\n');
             fprintf(fid,'echo "SLURM_ARRAY_TASK_ID: " $SLURM_ARRAY_TASK_ID\n');
             fprintf(fid,'echo "SLURM_ARRAY_JOB_ID: " $SLURM_ARRAY_JOB_ID\n');
-            fprintf(fid,'matlab -nosplash -nodesktop -nojvm -r "cd(''~/inca_hpcc'');
-										startup;serve(${SLURM_ARRAY_TASK_ID},''%s'')"',pwd);
+            fprintf(fid,'matlab -nosplash -nodesktop -nojvm -r "cd(''~/inca_hpcc'');startup;serve(${SLURM_ARRAY_TASK_ID},''%s'')"',pwd);
             fclose(fid);
             !sbatch mat.slurm
 ```
